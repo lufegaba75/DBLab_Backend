@@ -62,3 +62,10 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 * Regulations refers to Norms, Standards, Laws or other Regulations.
 * Each Regulation has different criteria for each sampletype
 * For each Technique (Parameter of a sampletype) can be a Criteria based on Regulations.
+
+  ### From Samples to Ordering analysis and Results
+  ![Samples, Ordering  Analysis And Results](https://github.com/lufegaba75/DBLab/assets/57178698/7d95d51c-5ac3-4938-8df3-d8fe1636bd7c)
+
+  
+
+  
