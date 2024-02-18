@@ -6,10 +6,11 @@ Backend project for a Laboratory Sample Management Software.
 1. About this version
 2. How to run
 3. Technologies
-4. Features
-5. About the Database
-6. Roles & Permissions
-7. 
+4. Other tools
+5. Features
+6. About the Database
+7. Roles & Permissions
+8. 
 
 ***
 ## About this version
@@ -28,8 +29,16 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 * Spring Framework 6
 * Spring Boot 3
 * PostgreSQL
+* JWT Authorization
   
 ***
+## Other tools:
+
+* Github
+* IntelliJ Idea
+* dbDiagram.io
+* pg_dump
+
 ## Features:
 
 - Users Management (Register, Login, Roles Assignement & Authorizations)
