@@ -13,17 +13,17 @@ Backend project for a Laboratory Sample Management Software.
 8. 
 
 ***
-## About this version
+## 1. About this version
 
 (Early access project)
 v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) implemented, Security implemented.
 ***
-## How to run?
+## 2. How to run?
 
 
 
 ***
-## Technologies:
+## 3. Technologies:
 
 * Java 17,
 * Spring Framework 6
@@ -32,14 +32,14 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 * JWT Authorization
   
 ***
-## Other tools:
+## 4. Other tools:
 
 * Github
 * IntelliJ Idea
 * dbDiagram.io
 * pg_dump
 
-## Features:
+## 5. Features:
 
 - Users Management (Register, Login, Roles Assignement & Authorizations)
 - Clients, Addresses & Phones CRUD
@@ -50,7 +50,7 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 - Analysis Results CRUD
 
 ***
-## About the Database:
+## 6. About the Database:
 
 ### From client to sample
 ![Client-Sample](https://github.com/lufegaba75/DBLab/assets/57178698/41be607e-9752-4198-807c-f616c1be94a2)
@@ -83,4 +83,4 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 * Each sample has one or more Results and each Result has each details for each parameter analyzed.
 
 ***
-## Roles and Permissions
+## 7. Roles and Permissions
