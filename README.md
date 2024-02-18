@@ -52,4 +52,6 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 * This samples belongs to a Sample Type.  
 
 ### From SampleType to Template and Regulation
+![SampleType-Template-Regulation](https://github.com/lufegaba75/DBLab/assets/57178698/64a28602-ef98-4bce-8f03-786673a30493)
+
 
