@@ -8,6 +8,8 @@ Backend project for a Laboratory Sample Management Software.
 3. Technologies
 4. Features
 5. About the Database
+6. Roles & Permissions
+7. 
 
 ***
 ## About this version
@@ -71,4 +73,5 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 * Analysis Order assigns an Analysis Template to a sample and takes specific techniques for the Analysis Order Details.
 * Each sample has one or more Results and each Result has each details for each parameter analyzed.
 
-  
+***
+## Roles and Permissions
