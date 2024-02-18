@@ -7,7 +7,7 @@ Backend project for a Laboratory Sample Management Software.
 2. How to run
 3. Technologies
 4. Features
-5. 
+5. About the Database
 
 ***
 ## About this version
@@ -54,4 +54,11 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 ### From SampleType to Template and Regulation
 ![SampleType-Template-Regulation](https://github.com/lufegaba75/DBLab/assets/57178698/64a28602-ef98-4bce-8f03-786673a30493)
 
-
+* For each SampleType you can define one or more templates.
+* Parameters stores the different parameters to analyze on the samples
+* Some parameters (microbiologic ones) belongs to a specie stored on table Species.
+* For each Parameter can be one or more techniques to apply
+* Each Technique can belong to more than one Template and each template has one or more techniques.
+* Regulations refers to Norms, Standards, Laws or other Regulations.
+* Each Regulation has different criteria for each sampletype
+* For each Technique (Parameter of a sampletype) can be a Criteria based on Regulations.
