@@ -51,3 +51,5 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 * A worker collects one or more samples from the Client in a single Sampling
 * This samples belongs to a Sample Type.  
 
+### From SampleType to Template and Regulation
+
