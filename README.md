@@ -63,9 +63,12 @@ v1 - Application endpoints, Persistence (schema.sql & data.sql still needed) imp
 * Each Regulation has different criteria for each sampletype
 * For each Technique (Parameter of a sampletype) can be a Criteria based on Regulations.
 
-  ### From Samples to Ordering analysis and Results
-  ![Samples, Ordering  Analysis And Results](https://github.com/lufegaba75/DBLab/assets/57178698/7d95d51c-5ac3-4938-8df3-d8fe1636bd7c)
+### From Samples to Ordering analysis and Results
+![Samples, Ordering  Analysis And Results](https://github.com/lufegaba75/DBLab/assets/57178698/7d95d51c-5ac3-4938-8df3-d8fe1636bd7c)
 
-  
+* An Analysis Template is an implementation of a template for a specific kind of sample or a specific client.
+* Each Analysis Template has one or more Analysis template techniques (implementation of Template techniques with dilutions, units and quantities)
+* Analysis Order assigns an Analysis Template to a sample and takes specific techniques for the Analysis Order Details.
+* Each sample has one or more Results and each Result has each details for each parameter analyzed.
 
   
