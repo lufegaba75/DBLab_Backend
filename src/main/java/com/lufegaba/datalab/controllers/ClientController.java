@@ -3,6 +3,7 @@ package com.lufegaba.datalab.controllers;
 import com.lufegaba.datalab.exceptions.BadRequestException;
 import com.lufegaba.datalab.model.entities.clients.Client;
 import com.lufegaba.datalab.services.ClientService;
+import com.lufegaba.datalab.services.TemplateService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import java.util.List;
 public class ClientController {
 
     private final ClientService clientService;
+    private final TemplateService templateService;
 
     @PostMapping(value = "demo")
     public String welcome() {
