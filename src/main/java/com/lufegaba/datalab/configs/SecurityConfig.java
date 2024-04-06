@@ -27,7 +27,7 @@ public class SecurityConfig {
         http.cors(Customizer.withDefaults());
         http.authorizeHttpRequests(
                 c -> c
-                        .requestMatchers("/auth/**").permitAll()
+                        /*.requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/address/**",
                                             "/api/v1/analysistemplates/**",
                                             "/analysistemplatetechniques/**",
@@ -46,8 +46,9 @@ public class SecurityConfig {
                                             "/workers/**").hasAuthority("ADMIN")
                         .requestMatchers("/analysisorders/**",
                                             "/samples/**",
-                                            "/samplings/**").hasAnyAuthority("WORKER", "ADMIN")
-                        .anyRequest().authenticated()
+                                            "/samplings/**").hasAnyAuthority("WORKER", "ADMIN")*/
+                        //.anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 );
         http.sessionManagement(
                 s -> s

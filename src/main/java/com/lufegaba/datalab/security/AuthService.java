@@ -34,6 +34,8 @@ public class AuthService {
 
         DatalabUser user = DatalabUser.builder()
                 .username(request.getUsername())
+                .country(request.getCountry())
+                .birthDate(request.birthDate)
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();

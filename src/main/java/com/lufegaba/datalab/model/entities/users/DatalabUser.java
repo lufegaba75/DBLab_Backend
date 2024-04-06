@@ -31,6 +31,9 @@ public class DatalabUser implements UserDetails {
     @NotBlank
     private String password;
 
+    private String country;
+    private Date birthDate;
+
     @Enumerated (EnumType.STRING)
     public Role role;
 
