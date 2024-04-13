@@ -66,15 +66,17 @@ public class ClientService {
     }
 
     public void addAddressToClient (Long id, Address address) {
+        var addressAdded = addressRepository.save(address);
         var clientToUpdate = findClientById(id);
         if (clientToUpdate.getAddress()!=null) {
             try {
                 addressRepository.deleteById(clientToUpdate.getAddress().getId());
-                clientToUpdate.setAddress(addressRepository.save(address));
+                clientToUpdate.setAddress(addressAdded);
             } catch (Exception e) {
                 throw new BadRequestException("Address not valid");
             }
         }
+        clientToUpdate.setAddress(addressAdded);
     }
 
     public void addPhoneToClient (Long id, Phone phone) {

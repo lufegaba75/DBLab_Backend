@@ -1,6 +1,7 @@
 package com.lufegaba.datalab.model.entities.clients;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lufegaba.datalab.model.entities.enumerations.Activity;
 import com.lufegaba.datalab.model.entities.samples.Sampling;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -26,6 +27,8 @@ public class Client {
 
     @Email
     private String email;
+
+    private Activity activity;
 
     @OneToOne
     @JoinColumn (name = "address_id", referencedColumnName = "id")
