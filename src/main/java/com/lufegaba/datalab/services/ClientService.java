@@ -65,7 +65,7 @@ public class ClientService {
         }
     }
 
-    public void addAddressToClient (Long id, Address address) {
+    public Client addAddressToClient (Long id, Address address) {
         var addressAdded = addressRepository.save(address);
         var clientToUpdate = findClientById(id);
         if (clientToUpdate.getAddress()!=null) {
@@ -77,9 +77,10 @@ public class ClientService {
             }
         }
         clientToUpdate.setAddress(addressAdded);
+        return clientToUpdate;
     }
 
-    public void addPhoneToClient (Long id, Phone phone) {
+    public Client addPhoneToClient (Long id, Phone phone) {
         var clientToUpdate = findClientById(id);
         if (clientToUpdate.getPhone()!=null) {
             try {
@@ -90,6 +91,7 @@ public class ClientService {
             }
         }
         clientRepository.save(clientToUpdate);
+        return clientToUpdate;
     }
 
     public Client updateClient (Long id, Client client) {

@@ -1,7 +1,9 @@
 package com.lufegaba.datalab.controllers;
 
 import com.lufegaba.datalab.exceptions.BadRequestException;
+import com.lufegaba.datalab.model.entities.clients.Address;
 import com.lufegaba.datalab.model.entities.clients.Client;
+import com.lufegaba.datalab.model.entities.clients.Phone;
 import com.lufegaba.datalab.services.ClientService;
 import com.lufegaba.datalab.services.TemplateService;
 import jakarta.validation.Valid;
@@ -56,5 +58,15 @@ public class ClientController {
     @PatchMapping("/{id}")
     public ResponseEntity<Client> updateClient (@PathVariable Long id, @RequestBody @Valid Client client) {
         return new ResponseEntity<Client>(clientService.updateClient(id, client), HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}/address")
+    public ResponseEntity<Client> addAddressToClient (@PathVariable Long id, @RequestBody @Valid Address address) {
+        return new ResponseEntity<Client>(clientService.addAddressToClient(id, address), HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}/phone")
+    public ResponseEntity<Client> addPhoneToClient (@PathVariable Long id, @RequestBody @Valid Phone phone) {
+        return new ResponseEntity<Client>(clientService.addPhoneToClient(id, phone), HttpStatus.OK);
     }
 }
