@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -51,23 +52,24 @@ public class ClientService {
                 orElseThrow(() -> new ResourceNotFoundException("Client with id = " + id + " not found."));
     }
 
-    public List<Client> filterByActivity (Activity activity) {
-        return clientRepository.findByActivity(activity);
+    public List<Client> filterByActivity (String activity) {
+        Activity act = Activity.valueOf(activity);
+        return clientRepository.findByActivity(act);
     }
 
     public List<Client> filterByName (String name) {
         var clients = clientRepository.findAll();
-        for (int i = 0; i < clients.size(); i++) {
-            if (!clients.get(i).getClientName().contains(name)) clients.remove(clients.get(i));
-        }
+        clients = clients.stream()
+                .filter(client -> client.getClientName().contains(name))
+                .collect(Collectors.toList());
         return clients;
     }
 
     public List<Client> filterByTown (String town) {
         var clients = clientRepository.findAll();
-        for (int i = 0; i < clients.size(); i++) {
-            if (!clients.get(i).getAddress().getTown().equals(town)) clients.remove(clients.get(i));
-        }
+        clients = clients.stream()
+                .filter(client -> client.getAddress().getTown().contains(town))
+                .collect(Collectors.toList());
         return clients;
     }
 

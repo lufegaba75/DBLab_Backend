@@ -26,11 +26,6 @@ public class ClientController {
     private final ClientService clientService;
     private final TemplateService templateService;
 
-    @PostMapping(value = "demo")
-    public String welcome() {
-        return "Welcome from secure endpoint";
-    }
-
     @PostMapping
     public ResponseEntity<Client> createNewClient (@RequestBody @Valid Client client) {
         return new ResponseEntity<Client>(clientService.createClient(client), HttpStatus.CREATED);
@@ -50,18 +45,17 @@ public class ClientController {
         return new ResponseEntity<>(clientService.findClientById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/search/{activity}")
+    @GetMapping("/{activity}/searchActivity")
     public ResponseEntity<List<Client>>getClientsByActivity (@PathVariable String activity) {
-        Activity act = Activity.valueOf(activity);
-        return new ResponseEntity<>(clientService.filterByActivity(act), HttpStatus.OK);
+        return new ResponseEntity<>(clientService.filterByActivity(activity), HttpStatus.OK);
     }
 
-    @GetMapping("/search/{name}")
+    @GetMapping("/{name}/searchName")
     public ResponseEntity<List<Client>> getClientsByName (@PathVariable String name) {
         return new ResponseEntity<>(clientService.filterByName(name), HttpStatus.OK);
     }
 
-    @GetMapping("/search/{towny}")
+    @GetMapping("/{town}/searchTown")
     public ResponseEntity<List<Client>> getClientsByTown (@PathVariable String town) {
         return new ResponseEntity<>(clientService.filterByTown(town), HttpStatus.OK);
     }
