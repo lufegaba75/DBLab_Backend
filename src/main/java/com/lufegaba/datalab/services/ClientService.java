@@ -5,6 +5,7 @@ import com.lufegaba.datalab.exceptions.ResourceNotFoundException;
 import com.lufegaba.datalab.model.entities.clients.Address;
 import com.lufegaba.datalab.model.entities.clients.Client;
 import com.lufegaba.datalab.model.entities.clients.Phone;
+import com.lufegaba.datalab.model.entities.enumerations.Activity;
 import com.lufegaba.datalab.model.repositories.AddressRepository;
 import com.lufegaba.datalab.model.repositories.ClientRepository;
 import com.lufegaba.datalab.model.repositories.PhoneRepository;
@@ -50,6 +51,26 @@ public class ClientService {
                 orElseThrow(() -> new ResourceNotFoundException("Client with id = " + id + " not found."));
     }
 
+    public List<Client> filterByActivity (Activity activity) {
+        return clientRepository.findByActivity(activity);
+    }
+
+    public List<Client> filterByName (String name) {
+        var clients = clientRepository.findAll();
+        for (int i = 0; i < clients.size(); i++) {
+            if (!clients.get(i).getClientName().contains(name)) clients.remove(clients.get(i));
+        }
+        return clients;
+    }
+
+    public List<Client> filterByTown (String town) {
+        var clients = clientRepository.findAll();
+        for (int i = 0; i < clients.size(); i++) {
+            if (!clients.get(i).getAddress().getTown().equals(town)) clients.remove(clients.get(i));
+        }
+        return clients;
+    }
+
     public void deleteClientById (Long id) {
         var clientToDelete = findClientById(id);
         var addressToDelete = clientToDelete.getAddress();
@@ -81,16 +102,10 @@ public class ClientService {
     }
 
     public Client addPhoneToClient (Long id, Phone phone) {
+        var phoneAdded = phoneRepository.save(phone);
         var clientToUpdate = findClientById(id);
-        if (clientToUpdate.getPhone()!=null) {
-            try {
-                phoneRepository.deleteById(clientToUpdate.getPhone().getId());
-                clientToUpdate.setPhone(phoneRepository.save(phone));
-            } catch (Exception e) {
-                throw new BadRequestException("Phone not valid");
-            }
-        }
-        clientRepository.save(clientToUpdate);
+        //phoneRepository.deleteById(clientToUpdate.getPhone().getId());
+        clientToUpdate.setPhone(phoneAdded);
         return clientToUpdate;
     }
 

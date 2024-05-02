@@ -4,6 +4,7 @@ import com.lufegaba.datalab.exceptions.BadRequestException;
 import com.lufegaba.datalab.model.entities.clients.Address;
 import com.lufegaba.datalab.model.entities.clients.Client;
 import com.lufegaba.datalab.model.entities.clients.Phone;
+import com.lufegaba.datalab.model.entities.enumerations.Activity;
 import com.lufegaba.datalab.services.ClientService;
 import com.lufegaba.datalab.services.TemplateService;
 import jakarta.validation.Valid;
@@ -47,6 +48,22 @@ public class ClientController {
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClientById (@PathVariable Long id) {
         return new ResponseEntity<>(clientService.findClientById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/{activity}")
+    public ResponseEntity<List<Client>>getClientsByActivity (@PathVariable String activity) {
+        Activity act = Activity.valueOf(activity);
+        return new ResponseEntity<>(clientService.filterByActivity(act), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Client>> getClientsByName (@PathVariable String name) {
+        return new ResponseEntity<>(clientService.filterByName(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/{towny}")
+    public ResponseEntity<List<Client>> getClientsByTown (@PathVariable String town) {
+        return new ResponseEntity<>(clientService.filterByTown(town), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
