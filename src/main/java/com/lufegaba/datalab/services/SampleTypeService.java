@@ -32,6 +32,13 @@ public class SampleTypeService {
         return sampleTypeRepository.findBySampleGroup(group);
     }
 
+    public SampleType updateSampleType (Long id, SampleType sampleType) {
+        var sampleTypeToUpdate = this.getSampleTypeById(id);
+        if (sampleType.getSampleGroup() != null) sampleTypeToUpdate.setSampleGroup(sampleType.getSampleGroup());
+        if (sampleType.getSampleType() != null) sampleTypeToUpdate.setSampleType(sampleType.getSampleType());
+        return sampleTypeToUpdate;
+    }
+
     public void deleteSampleType (Long id) {
         sampleTypeRepository.deleteById(id);
     }

@@ -38,6 +38,11 @@ public class SampleTypeController {
         return ResponseEntity.ok(sampleTypeService.getSampleTypeByGroup(group));
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<SampleType> updateSampleType (@PathVariable Long id, @RequestBody @Valid SampleType sampleType) {
+        return ResponseEntity.ok(sampleTypeService.updateSampleType(id, sampleType));
+    }
+
     @DeleteMapping("/{id}")
     public void deleteSampleType (@PathVariable Long id) {
         sampleTypeService.deleteSampleType(id);
