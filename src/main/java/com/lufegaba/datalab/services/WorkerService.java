@@ -31,6 +31,10 @@ public class WorkerService {
         return workerRepository.findById(id).orElseThrow();
     }
 
+    public Worker findWorkerByEmail (String email) {
+        return workerRepository.findByEmail(email);
+    }
+
     public List<Worker> findAllWorkersByWorkerType (WorkerType workerType) {
         return workerRepository.findAllWorkersByWorkerType(workerType);
     }
