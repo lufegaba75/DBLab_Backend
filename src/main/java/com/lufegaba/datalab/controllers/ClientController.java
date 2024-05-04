@@ -45,6 +45,11 @@ public class ClientController {
         return new ResponseEntity<>(clientService.findClientById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/{name}")
+    public ResponseEntity<Client> getClientByName (@PathVariable String name) {
+        return new ResponseEntity<>(clientService.findClientByName(name), HttpStatus.OK);
+    }
+
     @GetMapping("/{activity}/searchActivity")
     public ResponseEntity<List<Client>>getClientsByActivity (@PathVariable String activity) {
         return new ResponseEntity<>(clientService.filterByActivity(activity), HttpStatus.OK);

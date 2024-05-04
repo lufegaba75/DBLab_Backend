@@ -52,6 +52,10 @@ public class ClientService {
                 orElseThrow(() -> new ResourceNotFoundException("Client with id = " + id + " not found."));
     }
 
+    public Client findClientByName (String name) {
+        return clientRepository.findByClientName(name);
+    }
+
     public List<Client> filterByActivity (String activity) {
         Activity act = Activity.valueOf(activity);
         return clientRepository.findByActivity(act);
