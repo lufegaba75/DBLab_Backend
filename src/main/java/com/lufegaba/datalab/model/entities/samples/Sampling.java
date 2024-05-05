@@ -27,12 +27,12 @@ public class Sampling {
 
     @NotNull
     @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn(name="sampling_id", referencedColumnName = "id", nullable=false)
+    @JoinColumn(name="sampling_id", referencedColumnName = "id")
     private Client client;
 
     @NotNull
     @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn(name="worker_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name="worker_id", referencedColumnName = "id")
     private Worker worker;
 
     private LocalDate samplingDate;

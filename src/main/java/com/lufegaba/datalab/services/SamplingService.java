@@ -1,5 +1,6 @@
 package com.lufegaba.datalab.services;
 
+import com.lufegaba.datalab.model.entities.clients.Client;
 import com.lufegaba.datalab.model.entities.samples.Sampling;
 import com.lufegaba.datalab.model.repositories.ClientRepository;
 import com.lufegaba.datalab.model.repositories.SamplingRepository;
@@ -40,6 +41,12 @@ public class SamplingService {
         sampling.setCreatedAt(LocalDateTime.now());
 
         return samplingRepository.save(sampling);
+    }
+
+    public Sampling addClientToSampling(Long id, Client client) {
+        var samplingToUpdate = findSamplingById(id);
+        samplingToUpdate.setClient(client);
+        return samplingRepository.save(samplingToUpdate);
     }
 
     public List<Sampling> findAllSamplings () {
