@@ -39,9 +39,9 @@ public class SamplingController {
         return ResponseEntity.ok(samplingService.getAllClientSamplings(name));
     }
 
-    @GetMapping("/date")
-    public ResponseEntity<List<Sampling>> getAllSamplingsByDate () {
-        return ResponseEntity.ok(samplingService.getSamplingsByDate(LocalDate.now()));
+    @GetMapping("?date={date}")
+    public ResponseEntity<List<Sampling>> getAllSamplingsByDate (LocalDate date) {
+        return ResponseEntity.ok(samplingService.getSamplingsByDate(date));
     }
 
     //ojo formato de fechas.

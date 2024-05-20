@@ -31,18 +31,14 @@ public class Worker {
     private String email;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "worker", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "worker")
     private List<Sampling> samplingList;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "analyst",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "analyst")
     private List<AnalysisOrderDetails> analysisDetailsList;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "signedBy",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "signedBy")
     private List<SampleResult> resultsSignedBy;
 }

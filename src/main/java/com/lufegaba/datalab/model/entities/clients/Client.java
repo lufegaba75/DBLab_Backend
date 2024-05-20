@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -39,7 +40,7 @@ public class Client {
     private Phone phone;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "client")
     private List<Sampling> samplingList;
 
 }

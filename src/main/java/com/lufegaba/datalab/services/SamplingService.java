@@ -2,6 +2,7 @@ package com.lufegaba.datalab.services;
 
 import com.lufegaba.datalab.model.entities.clients.Client;
 import com.lufegaba.datalab.model.entities.samples.Sampling;
+import com.lufegaba.datalab.model.entities.users.Worker;
 import com.lufegaba.datalab.model.repositories.ClientRepository;
 import com.lufegaba.datalab.model.repositories.SamplingRepository;
 import com.lufegaba.datalab.model.repositories.WorkerRepository;
@@ -11,7 +12,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 @Service
 @AllArgsConstructor
@@ -23,30 +27,28 @@ public class SamplingService {
     private final ClientRepository clientRepository;
 
     public Sampling addSampling (Sampling sampling) {
-
-        var client = sampling.getClient();
-        var worker = sampling.getWorker();
-
-        if (!clientRepository.existsByClientName(client.getClientName())) {
-            clientRepository.save(client);
-        } else {
-            sampling.setClient(clientRepository.findByClientName(client.getClientName()));
-        }
-        if (!workerRepository.existsByEmail(worker.getEmail())) {
-            workerRepository.save(worker);
-        } else {
-            sampling.setWorker(workerRepository.findByEmail(worker.getEmail()));
-        }
-        sampling.setSamplingDate(LocalDate.now());
-        sampling.setCreatedAt(LocalDateTime.now());
-
-        return samplingRepository.save(sampling);
+        var today = LocalDate.now();
+        var now = LocalDateTime.now();
+        sampling.setSampleList(new ArrayList<>());
+        sampling.setSamplingDate(today);
+        sampling.setCreatedAt(now);
+        return this.samplingRepository.save(sampling);
     }
 
     public Sampling addClientToSampling(Long id, Client client) {
         var samplingToUpdate = findSamplingById(id);
-        samplingToUpdate.setClient(client);
-        return samplingRepository.save(samplingToUpdate);
+        if (client != null) {
+            samplingToUpdate.setClient(client);
+        }
+        return samplingToUpdate;
+    }
+
+    public Sampling addWorkerToSampling(Long id, Worker worker) {
+        var samplingToUpdate = findSamplingById(id);
+        if (worker != null ) {
+            samplingToUpdate.setWorker(worker);
+        }
+        return samplingToUpdate;
     }
 
     public List<Sampling> findAllSamplings () {
@@ -64,7 +66,11 @@ public class SamplingService {
     }
 
     public List<Sampling> getSamplingsByDate (LocalDate datetime) {
-        return samplingRepository.findBySamplingDate(datetime);
+        var samplings = samplingRepository.findAll();
+        samplings.forEach( sampling -> {
+            if (!sampling.getSamplingDate().equals(datetime)) samplings.remove(sampling);
+        });
+        return samplings;
     }
 
     public List<Sampling> getSamplingsBetweenDates (LocalDate date1, LocalDate date2) {
@@ -104,6 +110,9 @@ public class SamplingService {
             //falta condición de que sea un miembro válido del enum
             samplingToUpdate.setSamplingType(type);
         }
+        clientRepository.save(client);
+        workerRepository.save(worker);
+
         return samplingRepository.save(samplingToUpdate);
     }
 

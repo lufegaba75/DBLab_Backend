@@ -34,8 +34,8 @@ public class SampleTypeController {
     }
 
     @GetMapping("/group={group}")
-    public ResponseEntity<List<SampleType>> getSampleTypesByGroup (@PathVariable SampleGroup group) {
-        return ResponseEntity.ok(sampleTypeService.getSampleTypeByGroup(group));
+    public ResponseEntity<List<SampleType>> getSampleTypesByGroup (@PathVariable String group) {
+        return ResponseEntity.ok(sampleTypeService.getSampleTypeByGroup(SampleGroup.valueOf(group)));
     }
 
     @PatchMapping("/{id}")

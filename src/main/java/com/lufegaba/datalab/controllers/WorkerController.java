@@ -33,11 +33,6 @@ public class WorkerController {
         return ResponseEntity.ok(workerService.findWorkerById(id));
     }
 
-    @GetMapping("/{email}")
-    public ResponseEntity<Worker> getWorkerByEmail (@PathVariable String email) {
-        return ResponseEntity.ok(workerService.findWorkerByEmail(email));
-    }
-
     @GetMapping("/workertype={workertype}")
     public ResponseEntity<List<Worker>> getWorkersByType (@PathVariable WorkerType workertype) {
         return ResponseEntity.ok(workerService.findAllWorkersByWorkerType(workertype));

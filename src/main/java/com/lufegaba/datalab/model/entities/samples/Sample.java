@@ -1,5 +1,6 @@
 package com.lufegaba.datalab.model.entities.samples;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lufegaba.datalab.model.entities.analysis.AnalysisOrder;
 import com.lufegaba.datalab.model.entities.analysis.Template;
 import com.lufegaba.datalab.model.entities.results.SampleResult;
@@ -32,11 +33,13 @@ public class Sample {
     private String additionalInfo;
     private String observations;
 
+    @JsonIgnore
     @OneToMany (mappedBy = "sample",
             orphanRemoval = true,
             cascade = CascadeType.ALL)
     private List<AnalysisOrder> orderList;
 
+    @JsonIgnore
     @OneToMany (mappedBy = "sample",
             orphanRemoval = true,
             cascade = CascadeType.ALL)

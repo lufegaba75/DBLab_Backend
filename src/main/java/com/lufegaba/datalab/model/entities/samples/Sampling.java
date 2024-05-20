@@ -7,15 +7,15 @@ import com.lufegaba.datalab.model.entities.enumerations.SamplingObjective;
 import com.lufegaba.datalab.model.entities.enumerations.SamplingType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,16 +25,16 @@ public class Sampling {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long Id;
 
-    @NotNull
-    @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn(name="sampling_id", referencedColumnName = "id")
+    @ManyToOne (cascade = CascadeType.MERGE)
+    @JoinColumn(name="client_id", referencedColumnName = "id")
     private Client client;
 
-    @NotNull
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn(name="worker_id", referencedColumnName = "id")
     private Worker worker;
 
+    @Column
+    @Temporal(TemporalType.DATE)
     private LocalDate samplingDate;
     private LocalDateTime createdAt;
 

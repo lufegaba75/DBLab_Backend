@@ -30,7 +30,7 @@ public class AnalysisOrderDetails {
 
     private LocalDateTime measureDate;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "analyst_id", referencedColumnName = "id")
     private Worker analyst;
 
