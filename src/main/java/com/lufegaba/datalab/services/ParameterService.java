@@ -42,8 +42,17 @@ public class ParameterService {
         return parameterRepository.findBySpecies(speciesRepository.findById(id).orElseThrow());
     }
 
+    public Parameter updateParameter (Long id, Parameter parameter) {
+        var parameterToUpdate = this.findParameterById(id);
+        if ( parameter.getParameterCode()!=null ) parameterToUpdate.setParameterCode(parameter.getParameterCode());
+        if ( parameter.getParameterName()!=null ) parameterToUpdate.setParameterName(parameter.getParameterName());
+        if ( parameter.getParameterType()!=null ) parameterToUpdate.setParameterType(parameter.getParameterType());
+        if ( parameter.getSpecies()!=null ) parameterToUpdate.setSpecies(parameter.getSpecies());
+        return parameterRepository.save(parameterToUpdate);
+    }
+
     public void deleteParameterById (Long id) {
-        if (findParameterById(id).getParameterType().equals(ParameterType.MICROBIOLÓGICO)) {
+        if (findParameterById(id).getParameterType().equals(ParameterType.MICROBIOLOGICO)) {
             speciesRepository.deleteById(findParameterById(id).getSpecies().getId());
         }
         parameterRepository.deleteById(id);

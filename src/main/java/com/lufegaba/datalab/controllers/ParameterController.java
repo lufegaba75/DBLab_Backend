@@ -37,6 +37,11 @@ public class ParameterController {
         return ResponseEntity.ok(parameterService.findAllParametersBySpecies(id));
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Parameter> updateParameter (@PathVariable Long id, @RequestBody @Valid Parameter parameter ) {
+        return ResponseEntity.ok(parameterService.updateParameter(id, parameter));
+    }
+
     @DeleteMapping("/{id}")
     public void deleteParameter (@PathVariable Long id) {
         parameterService.deleteParameterById(id);

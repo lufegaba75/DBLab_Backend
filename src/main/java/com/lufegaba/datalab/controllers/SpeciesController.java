@@ -28,7 +28,7 @@ public class  SpeciesController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Species> getSpeciesById (Long id) {
+    public ResponseEntity<Species> getSpeciesById (@PathVariable Long id) {
         return ResponseEntity.ok(speciesService.getSpeciesById(id));
     }
 
