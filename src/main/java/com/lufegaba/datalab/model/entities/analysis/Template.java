@@ -25,14 +25,12 @@ public class Template {
     private String templateName;
     private boolean isActive;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn(name = "type_id", referencedColumnName = "id", nullable = false)
     private SampleType type;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "template",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "template")
     private List<RegulationTemplate> regulationTemplateList;
 
 }

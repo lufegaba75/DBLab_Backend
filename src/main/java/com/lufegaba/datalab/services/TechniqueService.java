@@ -49,6 +49,13 @@ public class TechniqueService {
                 parameterRepository.findById(id).orElseThrow());
     }
 
+    public Technique updateTechnique (Long id, Technique technique) {
+        var techniqueToUpdate = this.getTechniqueById(id);
+        if ( technique.getParameter() != null ) techniqueToUpdate.setParameter(technique.getParameter());
+        if ( technique.getTechniqueName() != null) techniqueToUpdate.setTechniqueName(technique.getTechniqueName());
+        return techniqueRepository.save(techniqueToUpdate);
+    }
+
     public void deleteTechnique (Long id) {
         techniqueRepository.deleteById(id);
     }

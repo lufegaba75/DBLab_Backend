@@ -23,12 +23,12 @@ public class TemplateTechniqueController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TemplateTechnique>> getAllTemplateTechiniques () {
+    public ResponseEntity<List<TemplateTechnique>> getAllTemplateTechniques () {
         return ResponseEntity.ok(templateTechniqueService.getAllTemplateTechniques());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TemplateTechnique> getTemplateTechiniqueById (@PathVariable Long id) {
+    public ResponseEntity<TemplateTechnique> getTemplateTechniqueById (@PathVariable Long id) {
         return ResponseEntity.ok(templateTechniqueService.findTemplateTechniqueById(id));
     }
 
@@ -38,7 +38,7 @@ public class TemplateTechniqueController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTemplateTechinique (@PathVariable Long id) {
+    public void deleteTemplateTechnique (@PathVariable Long id) {
         templateTechniqueService.deleteById(id);
     }
 }

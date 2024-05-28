@@ -2,6 +2,7 @@ package com.lufegaba.datalab.controllers;
 
 import com.lufegaba.datalab.model.entities.analysis.Technique;
 import com.lufegaba.datalab.services.TechniqueService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,11 @@ public class TechniqueController {
     @GetMapping("/parameter/{id}")
     public ResponseEntity<List<Technique>> getTechniquesByParameter (@PathVariable Long id) {
         return ResponseEntity.ok(techniqueService.getTechniquesByParameter(id));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Technique> updateTechnique (@PathVariable Long id, @RequestBody @Valid Technique technique) {
+        return ResponseEntity.ok(techniqueService.updateTechnique(id, technique));
     }
 
     @DeleteMapping("/{id}")

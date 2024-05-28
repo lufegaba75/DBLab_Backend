@@ -22,19 +22,15 @@ public class Technique {
 
     private String techniqueName;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "parameter_id", referencedColumnName = "id")
     private Parameter parameter;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "technique",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "technique")
     private List<TemplateTechnique> templateTechniqueList;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "technique",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "technique")
     private List<RegulationCriteria> regulationCriteriaList;
 }

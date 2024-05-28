@@ -25,14 +25,12 @@ public class Parameter {
     private String parameterName;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "parameter",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "parameter")
     private List<Technique> techniqueList;
 
     private ParameterType parameterType;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "species_id", referencedColumnName = "id")
     private Species species;
 

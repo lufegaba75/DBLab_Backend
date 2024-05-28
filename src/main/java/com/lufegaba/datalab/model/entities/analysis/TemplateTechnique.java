@@ -21,23 +21,19 @@ public class TemplateTechnique {
 
     private String code;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "template_id", referencedColumnName = "id")
     private Template template;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "technique_id", referencedColumnName = "id")
     private Technique technique;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "technique",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "technique")
     private List<AnalysisTemplateTechnique> analysisTechniquesList;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "technique",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "technique")
     private List<ResultDetails> resultDetailsList;
 }

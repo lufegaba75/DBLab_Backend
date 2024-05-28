@@ -23,9 +23,7 @@ public class Species {
     private String speciesName;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "species",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "species")
     private List<Parameter> parameterList;
 
 }
