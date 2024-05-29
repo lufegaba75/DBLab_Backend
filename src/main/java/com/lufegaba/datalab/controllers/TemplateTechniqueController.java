@@ -32,9 +32,9 @@ public class TemplateTechniqueController {
         return ResponseEntity.ok(templateTechniqueService.findTemplateTechniqueById(id));
     }
 
-    @GetMapping("/templateName={templateName}")
-    public ResponseEntity<List<TemplateTechnique>> getAllTechniquesByTemplate (@PathVariable String templateName) {
-        return ResponseEntity.ok(templateTechniqueService.findAllByTemplate(templateName));
+    @GetMapping("/template/{id}")
+    public ResponseEntity<List<TemplateTechnique>> getAllTechniquesByTemplate (@PathVariable Long id ){
+        return ResponseEntity.ok(templateTechniqueService.findAllByTemplate(id));
     }
 
     @DeleteMapping("/{id}")

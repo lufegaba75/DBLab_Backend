@@ -24,25 +24,6 @@ public class TemplateTechniqueService {
     private final SampleTypeRepository sampleTypeRepository;
 
     public TemplateTechnique createNewTemplateTechnique (TemplateTechnique templateTechnique) {
-        var template = templateTechnique.getTemplate();
-        var technique = templateTechnique.getTechnique();
-        var type = template.getType();
-
-        if (!sampleTypeRepository.existsBySampleType(type.getSampleType())){
-            sampleTypeRepository.save(type);
-        }
-        template.setType(sampleTypeRepository.findBySampleType(type.getSampleType()));
-
-        if (!templateRepository.existsByTemplateName(template.getTemplateName())){
-            templateRepository.save(template);
-        }
-        templateTechnique.setTemplate(templateRepository.findByTemplateName(template.getTemplateName()));
-
-        if (!techniqueRepository.existsByTechniqueName(technique.getTechniqueName())) {
-            techniqueRepository.save(technique);
-        }
-        templateTechnique.setTechnique(techniqueRepository.findByTechniqueName(technique.getTechniqueName()));
-
         return templateTechniqueRepository.save(templateTechnique);
     }
 
@@ -54,8 +35,8 @@ public class TemplateTechniqueService {
         return templateTechniqueRepository.findById(id).orElseThrow();
     }
 
-    public List<TemplateTechnique> findAllByTemplate (String templateName) {
-        var template = templateRepository.findByTemplateName(templateName);
+    public List<TemplateTechnique> findAllByTemplate (Long templateId) {
+        var template = templateRepository.findById(templateId).orElseThrow();
         return templateTechniqueRepository.findByTemplate(template);
     }
 
