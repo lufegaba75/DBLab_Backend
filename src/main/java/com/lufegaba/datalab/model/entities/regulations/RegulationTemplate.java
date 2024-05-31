@@ -24,11 +24,11 @@ public class RegulationTemplate {
     private String regulationTemplate;
 
     @ManyToOne (cascade = CascadeType.MERGE)
-    @JoinColumn (name = "regulation_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn (name = "regulation_id")
     private Regulation regulation;
 
     @ManyToOne (cascade = CascadeType.MERGE)
-    @JoinColumn (name = "template_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn (name = "template_id")
     private Template template;
 
     private Boolean everythingIsOk;

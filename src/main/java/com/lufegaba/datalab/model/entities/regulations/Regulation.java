@@ -26,9 +26,7 @@ public class Regulation {
     private RegulationType regulationType;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "regulation",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "regulation")
     private List<RegulationTemplate> templateList;
 
 }

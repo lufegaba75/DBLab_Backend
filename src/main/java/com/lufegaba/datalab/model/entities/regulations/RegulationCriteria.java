@@ -24,11 +24,11 @@ public class RegulationCriteria {
 
     private Unit unit;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "regulationTemplate", referencedColumnName = "id")
     private RegulationTemplate template;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "technique_id", referencedColumnName = "id")
     private Technique technique;
 
