@@ -29,8 +29,4 @@ public class Technique {
     @JsonIgnore
     @OneToMany (mappedBy = "technique")
     private List<TemplateTechnique> templateTechniqueList;
-
-    @JsonIgnore
-    @OneToMany (mappedBy = "technique")
-    private List<RegulationCriteria> regulationCriteriaList;
 }

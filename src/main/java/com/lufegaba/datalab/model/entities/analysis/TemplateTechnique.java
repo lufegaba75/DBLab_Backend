@@ -1,6 +1,7 @@
 package com.lufegaba.datalab.model.entities.analysis;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lufegaba.datalab.model.entities.regulations.RegulationCriteria;
 import com.lufegaba.datalab.model.entities.results.ResultDetails;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,10 @@ public class TemplateTechnique {
     @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "technique_id", referencedColumnName = "id")
     private Technique technique;
+
+    @JsonIgnore
+    @OneToMany (mappedBy = "technique")
+    private List<RegulationCriteria> regulationCriteriaList;
 
     @JsonIgnore
     @OneToMany (mappedBy = "technique")

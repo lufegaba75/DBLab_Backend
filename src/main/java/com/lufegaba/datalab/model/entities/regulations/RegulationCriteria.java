@@ -1,7 +1,6 @@
 package com.lufegaba.datalab.model.entities.regulations;
 
-import com.lufegaba.datalab.model.entities.analysis.Parameter;
-import com.lufegaba.datalab.model.entities.analysis.Technique;
+import com.lufegaba.datalab.model.entities.analysis.TemplateTechnique;
 import com.lufegaba.datalab.model.entities.enumerations.Unit;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,7 +29,7 @@ public class RegulationCriteria {
 
     @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "technique_id", referencedColumnName = "id")
-    private Technique technique;
+    private TemplateTechnique technique;
 
     private boolean isOk;
 
