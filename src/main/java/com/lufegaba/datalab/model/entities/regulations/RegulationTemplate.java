@@ -34,8 +34,6 @@ public class RegulationTemplate {
     private Boolean everythingIsOk;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "template",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "template")
     private List<RegulationCriteria> criteriaList;
 }

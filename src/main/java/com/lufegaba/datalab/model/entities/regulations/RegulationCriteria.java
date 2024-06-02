@@ -23,7 +23,7 @@ public class RegulationCriteria {
 
     private Unit unit;
 
-    @ManyToOne (cascade = CascadeType.MERGE)
+    @ManyToOne (cascade = CascadeType.DETACH)
     @JoinColumn (name = "regulationTemplate", referencedColumnName = "id")
     private RegulationTemplate template;
 

@@ -31,9 +31,9 @@ public class RegulationCriteriaController {
         return ResponseEntity.ok(regulationCriteriaService.findRegulationCriteriaById(id));
     }
 
-    @GetMapping ("/template={regulationTemplata}")
-    public ResponseEntity<List<RegulationCriteria>> getRegulationCriteriaByTemplate (@PathVariable String regulationTemplate) {
-        return ResponseEntity.ok(regulationCriteriaService.findByRegulationTemplate(regulationTemplate));
+    @GetMapping ("/regulationtemplate/{id}")
+    public ResponseEntity<List<RegulationCriteria>> getRegulationCriteriaByTemplate (@PathVariable Long id) {
+        return ResponseEntity.ok(regulationCriteriaService.findByRegulationTemplate(id));
     }
 
     @DeleteMapping ("/{id}")

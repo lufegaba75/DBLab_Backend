@@ -34,8 +34,8 @@ public class RegulationCriteriaService {
         return regulationCriteriaRepository.findById(id).orElseThrow();
     }
 
-    public List<RegulationCriteria> findByRegulationTemplate (String regulationTemplate) {
-        var template = regulationTemplateRepository.findByRegulationTemplate(regulationTemplate);
+    public List<RegulationCriteria> findByRegulationTemplate (Long id) {
+        var template = regulationTemplateRepository.findById(id).orElseThrow();
         return regulationCriteriaRepository.findByTemplate(template);
     }
 

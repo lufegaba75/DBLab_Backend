@@ -26,7 +26,7 @@ public class Template {
     private boolean isActive;
 
     @ManyToOne (cascade = CascadeType.MERGE)
-    @JoinColumn(name = "type_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "type_id", referencedColumnName = "id")
     private SampleType type;
 
     @JsonIgnore

@@ -51,8 +51,8 @@ public class RegulationTemplateService {
         return regulationTemplateRepository.findById(id).orElseThrow();
     }
 
-    public List<RegulationTemplate> findTemplatesByRegulation (String regulationName) {
-        var regulation = regulationRepository.findByShortName(regulationName);
+    public List<RegulationTemplate> findTemplatesByRegulation (Long id) {
+        var regulation = regulationRepository.findById(id).orElseThrow();
         return regulationTemplateRepository.findByRegulation(regulation);
     }
 
