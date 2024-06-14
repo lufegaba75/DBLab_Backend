@@ -3,6 +3,7 @@ package com.lufegaba.datalab.model.entities.users;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lufegaba.datalab.model.entities.analysis.AnalysisOrder;
 import com.lufegaba.datalab.model.entities.analysis.AnalysisOrderDetails;
+import com.lufegaba.datalab.model.entities.analysis.Measurement;
 import com.lufegaba.datalab.model.entities.analysis.SampleTemplate;
 import com.lufegaba.datalab.model.entities.enumerations.WorkerType;
 import com.lufegaba.datalab.model.entities.results.SampleResult;
@@ -38,7 +39,7 @@ public class Worker {
 
     @JsonIgnore
     @OneToMany (mappedBy = "analyst")
-    private List<AnalysisOrderDetails> analysisDetailsList;
+    private List<Measurement> measurementList;
 
     @JsonIgnore
     @OneToMany (mappedBy = "signedBy")

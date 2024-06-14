@@ -25,22 +25,15 @@ public class AnalysisOrderDetails {
     @JoinColumn (name = "analysis_id", referencedColumnName = "id")
     private AnalysisTemplateTechnique analysis;
 
-    private String measurement;
-    private String annotations;
-
-    private LocalDateTime measureDate;
-
-    @ManyToOne (cascade = CascadeType.MERGE)
-    @JoinColumn (name = "analyst_id", referencedColumnName = "id")
-    private Worker analyst;
-
     @ManyToOne (cascade = CascadeType.PERSIST)
     @JoinColumn (name = "order_id", referencedColumnName = "id")
     private AnalysisOrder order;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "analysisOrderDetails",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "analysisOrderDetail")
+    private List<Measurement> measurements;
+
+    @JsonIgnore
+    @OneToMany (mappedBy = "analysisOrderDetails")
     private List<ResultDetails> resultDetailsList;
 }
