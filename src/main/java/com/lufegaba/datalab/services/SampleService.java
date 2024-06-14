@@ -1,5 +1,6 @@
 package com.lufegaba.datalab.services;
 
+import com.lufegaba.datalab.model.entities.enumerations.SampleState;
 import com.lufegaba.datalab.model.entities.samples.Sample;
 import com.lufegaba.datalab.model.entities.samples.Sampling;
 import com.lufegaba.datalab.model.repositories.*;
@@ -33,12 +34,24 @@ public class SampleService {
             sampleTypeRepository.save(sampleType);
         }
         sample.setSampleType(sampleTypeRepository.findBySampleType(sampleType.getSampleType()));
-
+        sample.setSampleState(SampleState.RECEIVED);
         return sampleRepository.save(sample);
     }
 
     public List<Sample> getSamplesBySampling (Long id) {
         var sampling = samplingRepository.findById(id).orElseThrow();
         return sampleRepository.getSamplesBySampling(sampling);
+    }
+
+    public List<Sample> getAllSamples () {
+        return sampleRepository.findAll();
+    }
+
+    public Sample getSampleById (Long id) {
+        return sampleRepository.findById(id).orElseThrow();
+    }
+
+    public void deleteClientById(Long id) {
+        sampleRepository.deleteById(id);
     }
 }

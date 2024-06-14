@@ -2,7 +2,9 @@ package com.lufegaba.datalab.model.entities.samples;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lufegaba.datalab.model.entities.analysis.AnalysisOrder;
+import com.lufegaba.datalab.model.entities.analysis.SampleTemplate;
 import com.lufegaba.datalab.model.entities.analysis.Template;
+import com.lufegaba.datalab.model.entities.enumerations.SampleState;
 import com.lufegaba.datalab.model.entities.results.SampleResult;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,16 +35,17 @@ public class Sample {
     private String additionalInfo;
     private String observations;
 
+    private SampleState sampleState;
+
     @JsonIgnore
-    @OneToMany (mappedBy = "sample",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "sample")
     private List<AnalysisOrder> orderList;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "sample",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "sample")
     private List<SampleResult> results;
 
+    @JsonIgnore
+    @OneToMany (mappedBy = "sample")
+    private List<SampleTemplate> sampleTemplates;
 }

@@ -34,9 +34,9 @@ public class AnalysisTemplateController {
         return ResponseEntity.ok(analysisTemplateService.findAnalysisTemplateById(id));
     }
 
-    @GetMapping("/template={templateName}")
-    public ResponseEntity<List<AnalysisTemplate>> getAllByTemplate (@PathVariable String templateName) {
-        return ResponseEntity.ok(analysisTemplateService.findAnalysisTemplateByTemplate(templateName));
+    @GetMapping("/template/{id}")
+    public ResponseEntity<List<AnalysisTemplate>> getAllByTemplate (@PathVariable Long id) {
+        return ResponseEntity.ok(analysisTemplateService.findAnalysisTemplateByTemplate(id));
     }
 
     @PatchMapping("/{id}")

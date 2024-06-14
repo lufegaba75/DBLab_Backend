@@ -6,11 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AnalysisTemplateRepository extends JpaRepository<AnalysisTemplate, Long> {
 
-    List<AnalysisTemplate> findByTemplate (Template template);
+    Optional<AnalysisTemplate> findById (Long id);
+    List<AnalysisTemplate> findAllByTemplate (Template template);
     boolean existsByDescription (String description);
     AnalysisTemplate findByDescription (String description);
 }

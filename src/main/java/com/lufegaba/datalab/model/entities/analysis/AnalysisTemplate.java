@@ -18,8 +18,8 @@ public class AnalysisTemplate {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn (name = "template_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne (cascade = CascadeType.MERGE)
+    @JoinColumn (name = "template_id")
     private Template template;
 
     private String description;
@@ -27,15 +27,11 @@ public class AnalysisTemplate {
     private boolean isActive;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "analysisTemplate",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "analysisTemplate")
     private List<AnalysisOrder> analysisOrderList;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "analysisTemplate",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "analysisTemplate")
     private List<AnalysisTemplateTechnique> analysisTemplateTechniqueList;
 
 }

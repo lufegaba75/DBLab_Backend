@@ -37,8 +37,8 @@ public class TemplateService {
         return templateRepository.findById(id).orElseThrow();
     }
 
-    public List<Template> getTemplatesBySampleType (String sampletype) {
-        var type = typeRepository.findBySampleType(sampletype);
+    public List<Template> getTemplatesBySampleType (Long id) {
+        var type = typeRepository.findById(id).orElseThrow();
         return templateRepository.findByType(type);
     }
 

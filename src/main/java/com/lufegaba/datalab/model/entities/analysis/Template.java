@@ -33,4 +33,7 @@ public class Template {
     @OneToMany (mappedBy = "template")
     private List<RegulationTemplate> regulationTemplateList;
 
+    @JsonIgnore
+    @OneToMany (mappedBy = "template")
+    private List<SampleTemplate> sampleTemplates;
 }

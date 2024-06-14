@@ -1,6 +1,5 @@
 package com.lufegaba.datalab.model.entities.analysis;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lufegaba.datalab.model.entities.samples.Sample;
 import com.lufegaba.datalab.model.entities.users.Worker;
 import jakarta.persistence.*;
@@ -9,35 +8,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AnalysisOrder {
+public class SampleTemplate {
 
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
-    private LocalDateTime orderDate;
-    private LocalDateTime startDate;
+    private LocalDateTime assignedAt;
 
     @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn(name = "sample_id", referencedColumnName = "id")
     private Sample sample;
 
     @ManyToOne (cascade = CascadeType.MERGE)
-    @JoinColumn(name = "analysisTemplate_id", referencedColumnName = "id")
-    private AnalysisTemplate analysisTemplate;
+    @JoinColumn(name = "template_id", referencedColumnName = "id")
+    private Template template;
 
     @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "worker_id", referencedColumnName = "id")
-    private Worker orderedBy;
-
-    @JsonIgnore
-    @OneToMany (mappedBy = "order")
-    private List<AnalysisOrderDetails> orderDetailsList;
-
+    private Worker assignedBy;
 }

@@ -33,9 +33,9 @@ public class TemplateController {
         return ResponseEntity.ok(templateService.getTemplateById(id));
     }
 
-    @GetMapping("/type={type}")
-    public ResponseEntity<List<Template>> getTemplatesBySampleType (@PathVariable String type) {
-        return ResponseEntity.ok(templateService.getTemplatesBySampleType(type));
+    @GetMapping("/type/{id}")
+    public ResponseEntity<List<Template>> getTemplatesBySampleType (@PathVariable Long id) {
+        return ResponseEntity.ok(templateService.getTemplatesBySampleType(id));
     }
 
     @PatchMapping("/{id}")

@@ -34,9 +34,9 @@ public class AnalysisTemplateTechniqueController {
         return ResponseEntity.ok(analysisTemplateTechniqueService.findAnalysisTTById(id));
     }
 
-    @GetMapping("/analysistemplate={description}")
-    public ResponseEntity<List<AnalysisTemplateTechnique>> getATTechniquesByAnalysisTemplate (@PathVariable String description) {
-        return ResponseEntity.ok(analysisTemplateTechniqueService.findAnalysisTTByAnTemplate(description));
+    @GetMapping("/analysistemplate/{id}")
+    public ResponseEntity<List<AnalysisTemplateTechnique>> getATTechniquesByAnalysisTemplate (@PathVariable Long id) {
+        return ResponseEntity.ok(analysisTemplateTechniqueService.findAnalysisTTByAnTemplate(id));
     }
 
     @DeleteMapping("/{id}")

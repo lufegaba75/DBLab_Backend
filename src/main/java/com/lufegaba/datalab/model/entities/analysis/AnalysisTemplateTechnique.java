@@ -1,9 +1,11 @@
 package com.lufegaba.datalab.model.entities.analysis;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lufegaba.datalab.model.entities.enumerations.Concentration;
 import com.lufegaba.datalab.model.entities.enumerations.Quantity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,13 +23,13 @@ public class AnalysisTemplateTechnique {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
-    private String ATTCode;
+    private String aTTCode;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn (name = "analysisTemplate_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne (cascade = CascadeType.DETACH)
+    @JoinColumn (name = "analysisTemplate_id")
     private AnalysisTemplate analysisTemplate;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "templateTechnique_id")
     private TemplateTechnique technique;
 
@@ -35,9 +37,8 @@ public class AnalysisTemplateTechnique {
 
     private Quantity quantity;
 
-    @OneToMany (mappedBy = "analysis",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany (mappedBy = "analysis")
     private List<AnalysisOrderDetails> orderDetailsList;
 
 }

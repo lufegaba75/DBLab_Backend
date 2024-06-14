@@ -42,9 +42,9 @@ public class AnalysisTemplateService {
         return analysisTemplateRepository.findById(id).orElseThrow();
     }
 
-    public List<AnalysisTemplate> findAnalysisTemplateByTemplate (String templateName) {
-        var template = templateRepository.findByTemplateName(templateName);
-        return analysisTemplateRepository.findByTemplate(template);
+    public List<AnalysisTemplate> findAnalysisTemplateByTemplate (Long id) {
+        var template = templateRepository.findById(id).orElseThrow();
+        return analysisTemplateRepository.findAllByTemplate(template);
     }
 
     public AnalysisTemplate activateDeactivateAnalysisTemplate (Long id) {
