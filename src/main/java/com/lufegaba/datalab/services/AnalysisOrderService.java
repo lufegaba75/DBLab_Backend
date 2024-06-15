@@ -17,14 +17,6 @@ public class AnalysisOrderService {
 
     private final AnalysisOrderRepository analysisOrderRepository;
     private final SampleRepository sampleRepository;
-    private final AnalysisTemplateRepository analysisTemplateRepository;
-    private final TemplateRepository templateRepository;
-    private final SampleTypeRepository sampleTypeRepository;
-    private final SamplingRepository samplingRepository;
-    private final ClientRepository clientRepository;
-    private final PhoneRepository phoneRepository;
-    private final AddressRepository addressRepository;
-    private final WorkerRepository workerRepository;
 
     public AnalysisOrder createAnalysisOrder (AnalysisOrder analysisOrder) {
 
@@ -41,5 +33,8 @@ public class AnalysisOrderService {
         analysisOrderRepository.deleteById(id);
     }
 
+    public AnalysisOrder getAnalysisOrderById (Long id) {
+        return analysisOrderRepository.findById(id).orElseThrow();
+    }
 
 }
