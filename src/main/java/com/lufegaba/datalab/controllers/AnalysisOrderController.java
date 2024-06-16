@@ -26,6 +26,11 @@ public class AnalysisOrderController {
         return ResponseEntity.ok(analysisOrderService.createAnalysisOrder(analysisOrder));
     }
 
+    @GetMapping
+    public ResponseEntity<List<AnalysisOrder>> getAllAnalysisOrders() {
+        return ResponseEntity.ok(analysisOrderService.getAllAnalysisOrders());
+    }
+
     @GetMapping("/sample/{id}")
     public ResponseEntity<List<AnalysisOrder>> findAnalysisOrdersBySample (@PathVariable Long id) {
         return ResponseEntity.ok(analysisOrderService.getAnalysisOrdersBySample(id));
@@ -68,6 +73,16 @@ public class AnalysisOrderController {
     @GetMapping("/details/order/{id}")
     public ResponseEntity<List<AnalysisOrderDetails>> getAllAnalysisFromOrder (@PathVariable Long id) {
         return ResponseEntity.ok(analysisOrderDetailsService.getAllAnalysisFromOrder(id));
+    }
+
+    @GetMapping("/details/techniques/{id}")
+    public ResponseEntity<List<AnalysisOrderDetails>> getAllAnalysisFromTechnique (@PathVariable Long id) {
+        return ResponseEntity.ok(analysisOrderDetailsService.getAllAnalysisFromTechnique(id));
+    }
+
+    @GetMapping("/details")
+    public ResponseEntity<List<AnalysisOrderDetails>> getAllAnalysisOrderDetails () {
+        return ResponseEntity.ok(analysisOrderDetailsService.findAllAnalysisOrderDetails());
     }
 
 }

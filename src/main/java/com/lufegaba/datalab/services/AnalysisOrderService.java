@@ -24,6 +24,10 @@ public class AnalysisOrderService {
         return analysisOrderRepository.save(analysisOrder);
     }
 
+    public List<AnalysisOrder> getAllAnalysisOrders() {
+        return analysisOrderRepository.findAll();
+    }
+
     public List<AnalysisOrder> getAnalysisOrdersBySample (Long id) {
         var sample = sampleRepository.findById(id).orElseThrow();
         return analysisOrderRepository.findAnalysisOrderBySample(sample);

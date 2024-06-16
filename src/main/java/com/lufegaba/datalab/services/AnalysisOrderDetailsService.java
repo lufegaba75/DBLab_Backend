@@ -59,4 +59,13 @@ public class AnalysisOrderDetailsService {
         return analysisOrderDetailsRepository.findAllByOrder(order);
     }
 
+    public List<AnalysisOrderDetails> getAllAnalysisFromTechnique (Long id) {
+        var technique = analysisTemplateTechniqueRepository.findById(id).orElseThrow();
+        return analysisOrderDetailsRepository.findAllByAnalysis(technique);
+    }
+
+    public List<AnalysisOrderDetails> getAllAnalysisOrderDetails () {
+        return analysisOrderDetailsRepository.findAll();
+    }
+
 }
