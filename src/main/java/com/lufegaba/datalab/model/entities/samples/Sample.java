@@ -39,13 +39,5 @@ public class Sample {
 
     @JsonIgnore
     @OneToMany (mappedBy = "sample")
-    private List<AnalysisOrder> orderList;
-
-    @JsonIgnore
-    @OneToMany (mappedBy = "sample")
-    private List<SampleResult> results;
-
-    @JsonIgnore
-    @OneToMany (mappedBy = "sample")
     private List<SampleTemplate> sampleTemplates;
 }

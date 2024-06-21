@@ -17,18 +17,18 @@ public class ResultDetails {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "orderDetails_id", referencedColumnName = "id")
     private AnalysisOrderDetails analysisOrderDetails;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "sampleResult_id", referencedColumnName = "id")
     private SampleResult sampleResult;
 
     private Double numericResult;
     private String textResult;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn (name = "template_technique_id", referencedColumnName = "id")
     private TemplateTechnique technique;
 

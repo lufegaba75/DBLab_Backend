@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface AnalysisOrderDetailsRepository extends JpaRepository<AnalysisOrderDetails, Long> {
 
-    List<AnalysisOrderDetails> findAllByOrder(AnalysisOrder order);
+    List<AnalysisOrderDetails> findAllByAnalysisOrder(AnalysisOrder analysisOrder);
     List<AnalysisOrderDetails> findAllByAnalysis(AnalysisTemplateTechnique analysis);
 }

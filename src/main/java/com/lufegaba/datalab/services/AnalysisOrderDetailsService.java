@@ -40,7 +40,7 @@ public class AnalysisOrderDetailsService {
             var techniqueToAdd = technique;
             AnalysisOrderDetails analysisToAdd = new AnalysisOrderDetails();
             analysisToAdd.setAnalysis(techniqueToAdd);
-            analysisToAdd.setOrder(order);
+            analysisToAdd.setAnalysisOrder(order);
             analysisAdded.add(this.createAnalysis(analysisToAdd));
         });
         return analysisAdded;
@@ -56,7 +56,7 @@ public class AnalysisOrderDetailsService {
 
     public List<AnalysisOrderDetails> getAllAnalysisFromOrder (Long id) {
         var order = analysisOrderRepository.findById(id).orElseThrow();
-        return analysisOrderDetailsRepository.findAllByOrder(order);
+        return analysisOrderDetailsRepository.findAllByAnalysisOrder(order);
     }
 
     public List<AnalysisOrderDetails> getAllAnalysisFromTechnique (Long id) {

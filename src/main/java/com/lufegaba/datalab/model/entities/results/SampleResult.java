@@ -1,6 +1,8 @@
 package com.lufegaba.datalab.model.entities.results;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lufegaba.datalab.model.entities.analysis.AnalysisOrder;
+import com.lufegaba.datalab.model.entities.analysis.SampleTemplate;
 import com.lufegaba.datalab.model.entities.users.Worker;
 import com.lufegaba.datalab.model.entities.samples.Sample;
 import jakarta.persistence.*;
@@ -22,8 +24,8 @@ public class SampleResult {
     private Long id;
 
     @ManyToOne
-    @JoinColumn (name = "sample_id", referencedColumnName = "id", nullable = false)
-    private Sample sample;
+    @JoinColumn (name = "order_id", referencedColumnName = "id", nullable = false)
+    private AnalysisOrder order;
 
     private LocalDateTime reportDate;
 
@@ -32,8 +34,8 @@ public class SampleResult {
     private Worker signedBy;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "sampleResult",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "sampleResult")
     private List<ResultDetails> resultDetailsList;
+
+
 }

@@ -9,6 +9,4 @@ import java.util.List;
 
 @Repository
 public interface AnalysisOrderRepository extends JpaRepository<AnalysisOrder, Long> {
-
-    List<AnalysisOrder> findAnalysisOrderBySample (Sample sample);
 }

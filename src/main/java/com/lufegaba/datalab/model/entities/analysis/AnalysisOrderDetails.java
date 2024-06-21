@@ -27,7 +27,7 @@ public class AnalysisOrderDetails {
 
     @ManyToOne (cascade = CascadeType.PERSIST)
     @JoinColumn (name = "order_id", referencedColumnName = "id")
-    private AnalysisOrder order;
+    private AnalysisOrder analysisOrder;
 
     @JsonIgnore
     @OneToMany (mappedBy = "analysisOrderDetail")

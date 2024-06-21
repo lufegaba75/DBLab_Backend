@@ -2,6 +2,7 @@ package com.lufegaba.datalab.services;
 
 import com.lufegaba.datalab.model.entities.analysis.AnalysisOrder;
 import com.lufegaba.datalab.model.entities.analysis.AnalysisTemplate;
+import com.lufegaba.datalab.model.entities.enumerations.SampleState;
 import com.lufegaba.datalab.model.repositories.*;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -19,18 +20,12 @@ public class AnalysisOrderService {
     private final SampleRepository sampleRepository;
 
     public AnalysisOrder createAnalysisOrder (AnalysisOrder analysisOrder) {
-
         analysisOrder.setOrderDate(LocalDateTime.now());
         return analysisOrderRepository.save(analysisOrder);
     }
 
     public List<AnalysisOrder> getAllAnalysisOrders() {
         return analysisOrderRepository.findAll();
-    }
-
-    public List<AnalysisOrder> getAnalysisOrdersBySample (Long id) {
-        var sample = sampleRepository.findById(id).orElseThrow();
-        return analysisOrderRepository.findAnalysisOrderBySample(sample);
     }
 
     public void deleteAnalysisOrderById (Long id) {
