@@ -71,12 +71,12 @@ public class ClientController {
         return new ResponseEntity<Client>(clientService.updateClient(id, client), HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}/address")
+    @PatchMapping("/address/{id}")
     public ResponseEntity<Client> addAddressToClient (@PathVariable Long id, @RequestBody @Valid Address address) {
         return new ResponseEntity<Client>(clientService.addAddressToClient(id, address), HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}/phone")
+    @PatchMapping("/phone/{id}")
     public ResponseEntity<Client> addPhoneToClient (@PathVariable Long id, @RequestBody @Valid Phone phone) {
         return new ResponseEntity<Client>(clientService.addPhoneToClient(id, phone), HttpStatus.OK);
     }

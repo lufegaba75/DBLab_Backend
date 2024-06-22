@@ -26,20 +26,6 @@ public class ClientService {
     private final PhoneRepository phoneRepository;
 
     public Client createClient (Client client) {
-        if (client.getAddress() != null) {
-            try {
-                addressRepository.save(client.getAddress());
-            } catch (Exception e) {
-                throw new BadRequestException("Incorrect address");
-            }
-        }
-        if (client.getPhone() != null) {
-            try {
-                phoneRepository.save(client.getPhone());
-            } catch (Exception e) {
-                throw new BadRequestException("Incorrect phone");
-            }
-        }
         return clientRepository.save(client);
     }
 
@@ -97,7 +83,6 @@ public class ClientService {
         var clientToUpdate = findClientById(id);
         if (clientToUpdate.getAddress()!=null) {
             try {
-                addressRepository.deleteById(clientToUpdate.getAddress().getId());
                 clientToUpdate.setAddress(addressAdded);
             } catch (Exception e) {
                 throw new BadRequestException("Address not valid");
@@ -110,7 +95,7 @@ public class ClientService {
     public Client addPhoneToClient (Long id, Phone phone) {
         var phoneAdded = phoneRepository.save(phone);
         var clientToUpdate = findClientById(id);
-        //phoneRepository.deleteById(clientToUpdate.getPhone().getId());
+
         clientToUpdate.setPhone(phoneAdded);
         return clientToUpdate;
     }
@@ -125,6 +110,6 @@ public class ClientService {
         if (client.getPhone() != null) {
             addPhoneToClient(id, client.getPhone());
         }
-        return findClientById(id);
+        return client;
     }
 }
